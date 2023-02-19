@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gay Web-Site</title>
+</head>
+<body>
+    <button onclick="getMin(2, 3)">Task 1</button>
+    <button onclick="pow(4, 2)">Task 2</button>
+    <button onclick="calculate(2, 2, '+')">Task 3</button>
+    <button onclick="primeNumber(8)">Task 4</button>
+    <button onclick="multiplyTableFor(2)">Task 5</button>
+    <button onclick="task6()">Task 6</button>
+    <button onclick="sumNumbersFrom1To5(1, 2, 3, 4, 5)">Task 7</button>
+    <button onclick="max(1, 2, 3, 4, 5)">Task 8</button>
+    <button onclick="allOddsOrEvensInRange(1, 10, true)">Task 9</button>
+    <button onclick="task10()">Task 10</button>
+    <script>
+        function getMin(a, b) {
+            alert(`Among ${a} and ${b}, ${a < b ? a : b} is min`);
+        }
+        function pow(number, power) {
+            alert(`${number} to the power of ${power} equals ${number**power}`);
+        }
+        function calculate(a, b, mathOperator) {
+            let result;
+            switch(mathOperator)
+            {
+                case "-":
+                    result = a - b;
+                    break;
+                case "+":
+                    result = a + b;
+                    break;
+                case "*":
+                    result = a * b;
+                    break;
+                case "/":
+                    result = a / b;
+                    break;
+                default:
+                    return;
+            }
+            alert(`${a} ${mathOperator} ${b} = ${result}`);
+        }
+        function primeNumber(number) {
+            if (number > 1) {
+                let isPrime = true;
+                for (let i = 2; i < number; i++) {
+                    if (number % i == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                alert(`The number is ${(isPrime ? "prime" : "not prime")}`);
+            }
+        }
+        function multiplyTableFor(number) {
+            let table = "";
+            for (let i = 2; i <= 9; i++) 
+                table += `${number} * ${i} = ${number * i}\n`;
+            alert(table);
+        }
+        function sumNumbersFrom1To5() {
+            if (arguments.length <= 5 && arguments.length > 0){
+                let sum = 0;
+                for (let i = 0; i < arguments.length; i++) {
+                    sum += arguments[i];
+                }
+                alert(sum);
+            }
+        }
+        function max() {
+            if (arguments.length <= 5 && arguments.length > 0){
+                let max = arguments[0];
+                for (let i = 1; i < arguments.length; i++) 
+                    if (arguments[i] > max)
+                        max = arguments[i];
+                alert(max);
+            }
+        }
+        function allOddsOrEvensInRange(beg, end, outputEven) {
+            let result = [];
+            for (let i = beg; i <= end; i++) 
+            {
+                if (outputEven)
+                {
+                    if (i % 2 === 0)
+                        result.push(i);
+                }
+                else
+                {
+                    if (i % 2 !== 0)
+                        result.push(i);
+                }
+            }
+            alert(result);
+        }
+    </script>
+</body>
+</html>

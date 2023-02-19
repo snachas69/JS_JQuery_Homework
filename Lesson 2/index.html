@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gay Web-Site</title>
+</head>
+<body>
+    <script>
+        function Task1() {
+            const age = Number(prompt("Enter your age"));
+
+            if (isNaN(age)) {
+                alert("Error");
+                return;
+            }
+            if (age >= 0 && age <= 4) {
+                alert("Baby");
+                return;
+            }
+            if (age >= 4 && age <= 12) {
+                alert("Child");
+                return;
+            }
+            if (age >= 12 && age <= 18) {
+                alert("Teenager");
+                return;
+            }
+            if (age >= 18 && age <= 60) {
+                alert("Adult");
+                return;
+            }
+            if (age >= 60) {
+                alert("Old person");
+                return;
+            }
+        }
+        function Task2() {
+            const number = Number(prompt("Enter the number"));
+
+            switch (number)
+            {
+                case 1:
+                    alert("The character on the key is !");
+                    break;
+                case 2:
+                    alert("The character on the key is @");
+                    break;
+                case 3:
+                    alert("The character on the key is #");
+                    break;
+                case 4:
+                    alert("The character on the key is $");
+                    break;
+                case 5:
+                    alert("The character on the key is %");
+                    break;
+                case 6:
+                    alert("The character on the key is ^");
+                    break;
+                case 7:
+                    alert("The character on the key is &");
+                    break;
+                case 8:
+                    alert("The character on the key is *");
+                    break;
+                case 9:
+                    alert("The character on the key is (");
+                    break;
+                case 0:
+                    alert("The character on the key is )");
+                    break;
+                default:
+                    alert("Error");
+                    break;
+            }
+        }
+        function Task3() {
+            const number = prompt("Enter 3-digit number");
+
+            if (isNaN(number) || number < 100 || number > 999) {
+                alert("Error");
+                return;
+            }
+            alert(`${number[0] === number[1] && number[1] === number[2] ? "All digits are equal" : "Digits are different"}`);
+        }
+        function Task4() {
+            const number = prompt("Enter 5-digit number");
+
+            if(isNaN(number) || number < 10000 || number > 99999) {
+                alert("Error");
+                return;
+            }
+            alert(`${number.split("").reverse().join("") === number ? "The number is polyondromic" : "The number is not polyondromic"}`)
+        }
+        function Task5() {
+            let counter = 0;
+            
+            const question1 = prompt("Who's the best teacher?\nA)You:)\nB)Indian dude from YouTube\nC)All teachers are good in their own way, it's no right to put one over others");
+            if (question1.toLowerCase() === "a")
+                counter += 2;
+
+            const question2 = prompt("Who's the best student?\nA)Me:)\nB)Definitely me:)\nC)Certainly me:)");
+            if (question2.toLowerCase() === "a")
+                counter += 2;
+            
+            const question3 = prompt("Are previous correct answers a's?\nA)Yes\nB)No\nC)What a dumb question...");
+            if (question2.toLowerCase() === "a")
+                counter += 2;
+            
+            alert(`Your score is ${counter}`);
+        }
+    </script>
+
+    <button onclick="Task1()">Task 1</button>
+    <button onclick="Task2()">Task 2</button>
+    <button onclick="Task3()">Task 3</button>
+    <button onclick="Task4()">Task 4</button>
+    <button onclick="Task5()">Task 5</button>
+</body>
+</html>

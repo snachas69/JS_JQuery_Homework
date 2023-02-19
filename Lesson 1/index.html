@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gay Web-Site</title>
+</head>
+<body>
+    <button onclick="task1()">Task 1</button>
+    <button onclick="task2()">Task 2</button>
+    <button onclick="task3()">Task 3</button>
+    <button onclick="task4()">Task 4</button>
+    <button onclick="task5()">Task 5</button>
+    <button onclick="task6()">Task 6</button>
+    <button onclick="task7()">Task 7</button>
+    <button onclick="task8()">Task 8</button>
+    <button onclick="task9()">Task 9</button>
+    <button onclick="task10()">Task 10</button>
+    <script>
+        function task1() {
+            const input = prompt("Enter your name");
+            if(input !== null)
+                alert(`Hello, ${input}`);
+        }
+        function task2() {
+            const CURRENT_YEAR = 2023;
+            const input = prompt("Enter your birth year");
+            if (input !== null && Number(input) !== NaN && CURRENT_YEAR > input)
+                alert(`You're approximately ${CURRENT_YEAR - input}`);
+        }
+        function task3() {
+            const input = prompt("Enter the length of the side of the square");
+            let string = "";
+            if (input !== null && Number(input) !== NaN) {
+                for (var i = 0; i < input; i++) {
+                    for (var j = 0; j < input; j++) 
+                        string += "*";
+                    string += "\n";
+                }
+                alert(string);   
+            }
+        }
+        function task4() {
+            const input = prompt("Enter the radius of the circle");
+            if (input !== null && Number(input) !== NaN)
+                alert(`S = ${Math.PI * input ** 2}`)
+        }
+        function task5() {
+            const distanceInput = prompt("Enter the distance in kilometers");
+            const timeInput = prompt("Enter the speed in hours");
+            if (distanceInput !== null && Number(distanceInput) !== NaN
+                && timeInput !== null && Number(timeInput) !== NaN)
+                alert(`S = ${(distanceInput / timeInput).toFixed(2)} km\\h`); 
+        }
+        function task6() {
+            const EURO = 0.92;
+            const input = prompt("Enter the price in USD");
+            if (input !== null && Number(input) !== NaN)
+                alert((input * EURO).toFixed(2));
+        }
+        function task7() {
+            const input = prompt("Enter the storage of the HDD in Gb");
+            if (input !== null && Number(input) !== NaN)
+                alert(`${(input * 1024 / 820).toFixed(0)} 820 Mb files can fit on the HDD`);
+        }
+        function task8() {
+            const totalInput = prompt("Enter the total sum of your money in the pocket");
+            const chocolatePriceInput = prompt("Enter the chocolate price");
+            if (totalInput !== null && Number(totalInput) !== NaN
+                && chocolatePriceInput != null && Number(chocolatePriceInput) !== NaN)
+            {
+                const result = (totalInput / chocolatePriceInput).toFixed(0);
+                const output = `Chocolate which you can buy: ${result}`;
+                alert(output + `\nChange: ${totalInput - (result * chocolatePriceInput).toFixed(0)}`);
+            }
+        }
+        function task9() {
+            const input = prompt("Enter the three-digit number");
+            if (input !== null && Number(input) !== NaN && input.length === 3)
+            {
+                const hundred = (input / 100).toFixed(0);
+                const ten = ((input / 10) % 10).toFixed(0);
+                const one = (input % 10).toFixed(0);
+                alert(`${one}${ten}${hundred}`);
+            }
+        }
+        function task10() {
+            const input = prompt("Enter the integer number");
+            if (input !== null && Number(input) !== NaN)
+            {    if (input % 2 === 0)
+                    alert("The number is even");
+                else
+                    alert("The number is odd");
+            }
+        }
+    </script>
+</body>
+</html>

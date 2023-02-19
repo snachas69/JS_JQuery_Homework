@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gay Web-Site</title>
+</head>
+<body>
+    <button onclick="Task1()">Task 1</button>
+    <button onclick="Task2()">Task 2</button>
+    <button onclick="Task3()">Task 3</button>
+    <script>
+        function Task1() {
+            let car = {
+                model: "some model",
+                year: 2007,
+                avarageSpeed: 30,
+                manufacturer: "randome dude",
+                info() {
+                    alert(JSON.stringify(this));
+                },
+                time(distance) {
+                    const time = distance / avarageSpeed;
+                    const breaks = Math.trunc(time) / 4;
+                    alert(time + breaks);
+                }
+            }
+
+            car.info();
+            car.time(20);
+        }
+        function Task2() {
+            let fraction = {
+
+            }
+        }
+        function Task3() {
+            let dateTime = {
+                
+            }
+        }
+    </script>
+</body>
+</html>
