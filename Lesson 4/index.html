@@ -7,96 +7,141 @@
     <title>Gay Web-Site</title>
 </head>
 <body>
-    <button onclick="getMin(2, 3)">Task 1</button>
-    <button onclick="pow(4, 2)">Task 2</button>
-    <button onclick="calculate(2, 2, '+')">Task 3</button>
-    <button onclick="primeNumber(8)">Task 4</button>
-    <button onclick="multiplyTableFor(2)">Task 5</button>
-    <button onclick="task6()">Task 6</button>
-    <button onclick="sumNumbersFrom1To5(1, 2, 3, 4, 5)">Task 7</button>
-    <button onclick="max(1, 2, 3, 4, 5)">Task 8</button>
-    <button onclick="allOddsOrEvensInRange(1, 10, true)">Task 9</button>
-    <button onclick="task10()">Task 10</button>
+    <button onclick="compareNumbers(2, 3)">Task 1</button>
+    <button onclick="factorial(4)">Task 2</button>
+    <button onclick="digitsToNumber(8, 8, 9)">Task 3</button>
+    <button onclick="squareOf(2, 2)">Task 4</button>
+    <button onclick="isPerfectNumber(123, true)">Task 5</button>
+    <button onclick="perfectNumbersInRange(1, 6)">Task 6</button>
+    <button onclick="timeInFormat(1, 2, 3)">Task 7</button>
+    <button onclick="toSeconds(true, 1, 10, 3)">Task 8</button>
+    <button onclick="toTimeString(28, true)">Task 9</button>
+    <button onclick="compareTime(10, 1, 2, 3, 55, 54)">Task 10</button>
     <script>
-        function getMin(a, b) {
-            alert(`Among ${a} and ${b}, ${a < b ? a : b} is min`);
-        }
-        function pow(number, power) {
-            alert(`${number} to the power of ${power} equals ${number**power}`);
-        }
-        function calculate(a, b, mathOperator) {
+        function compareNumbers(a, b) {
             let result;
-            switch(mathOperator)
-            {
-                case "-":
-                    result = a - b;
-                    break;
-                case "+":
-                    result = a + b;
-                    break;
-                case "*":
-                    result = a * b;
-                    break;
-                case "/":
-                    result = a / b;
-                    break;
-                default:
-                    return;
-            }
-            alert(`${a} ${mathOperator} ${b} = ${result}`);
+            
+            if (a > b) result = 1;
+            else if (a === b) result = 0;
+            else result = -1;
+
+            alert(result);
+            return result;
         }
-        function primeNumber(number) {
-            if (number > 1) {
-                let isPrime = true;
-                for (let i = 2; i < number; i++) {
-                    if (number % i == 0) {
-                        isPrime = false;
-                        break;
+        function factorial(number) {
+            let factorial = 1;
+            for (let i = 1; i <= number; i++)
+                factorial *= i;
+            alert(factorial);
+            return factorial;
+        }
+        function digitsToNumber(a, b, c) {
+            let result;
+            
+            a = String(a);
+            b = String(b);
+            c = String(c);
+
+            if (a === "0" && b === "0")
+                result = c;
+            else if (a === "0")
+                result = b + c;
+            else
+                result = a + b + c;
+
+            alert(result);
+            return result;
+        }
+        function squareOf() {
+            if (arguments <= 2 && arguments !== 0) {
+                let result;
+
+                if (arguments.length === 2)
+                    result = arguments[0] * arguments[1];
+                else
+                    result = arguments[0] * arguments[0];
+
+                alert(result);
+                return result;
+            }
+        }
+        function isPerfectNumber(number, inputResult) {
+            let result = 0;
+            for (let char in String(number))
+                result += char;
+            result = result === number;
+            if (inputResult) alert(result);
+            return result
+        }
+        function perfectNumbersInRange(start, end) {
+            let numbers = [];
+            for (let i = start; i <= end; i++)
+                if (isPerfectNumber(i, false))
+                    numbers.push(i);
+            alert(numbers);
+            return numbers;
+        }
+        function timeInFormat() {
+            if (arguments.length <= 3 && arguments.length >= 0) {
+                let hours, minutes, seconds;
+                
+                if (arguments.length === 0)
+                    hours = seconds = minutes = "00";
+                else {
+                    if (arguments[0] > 23) hours = "23";
+                    else if (arguments[0] < 0) hours = "00";
+                    else if (arguments[0] < 9) hours = `0${arguments[0]}`;
+                    else hours = String(arguments[0]);
+                    
+                    if (arguments.length === 2) {
+                        if (arguments[1] > 59) minutes = "59";
+                        else if (arguments[1] < 0) minutes = "00";
+                        else if (arguments[1] < 9) hours = `0${arguments[1]}`;
+                        else hours = String(arguments[1]);
+                    }
+
+                    if (arguments.length === 3) {
+                        if (arguments[2] > 59) minutes = "59";
+                        else if (arguments[2] < 0) minutes = "00";
+                        else if (arguments[2] < 9) hours = `0${arguments[2]}`;
+                        else hours = String(arguments[2]);
                     }
                 }
-                alert(`The number is ${(isPrime ? "prime" : "not prime")}`);
+
+                alert(`${hours}:${minutes}:${seconds}`);
+                return `${hours}:${minutes}:${seconds}`;
             }
         }
-        function multiplyTableFor(number) {
-            let table = "";
-            for (let i = 2; i <= 9; i++) 
-                table += `${number} * ${i} = ${number * i}\n`;
-            alert(table);
-        }
-        function sumNumbersFrom1To5() {
-            if (arguments.length <= 5 && arguments.length > 0){
-                let sum = 0;
-                for (let i = 0; i < arguments.length; i++) {
-                    sum += arguments[i];
-                }
-                alert(sum);
+        function toSeconds(inputResult) {
+            if (arguments.length <= 3 && arguments.length > 0) {
+                let seconds = 0;
+
+                if (arguments.length === 3)
+                    seconds += arguments[2];
+                if ([2, 3].includes(arguments.length))
+                    seconds += arguments[1] * 60;
+                if ([1, 2, 3].includes(arguments.length))
+                    seconds += arguments[0] * 60 * 24;
+                
+                if (inputResult) alert(seconds);
+                return seconds;
             }
         }
-        function max() {
-            if (arguments.length <= 5 && arguments.length > 0){
-                let max = arguments[0];
-                for (let i = 1; i < arguments.length; i++) 
-                    if (arguments[i] > max)
-                        max = arguments[i];
-                alert(max);
-            }
+        function toTimeString(seconds, inputResult) {
+            const totalMinutes = Math.floor(seconds / 60);
+
+            const seconds = seconds % 60;
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+
+            if (inputResult) alert(`${hours}:${minutes}:${seconds}`);
+            return `${hours}:${minutes}:${seconds}`;
         }
-        function allOddsOrEvensInRange(beg, end, outputEven) {
-            let result = [];
-            for (let i = beg; i <= end; i++) 
-            {
-                if (outputEven)
-                {
-                    if (i % 2 === 0)
-                        result.push(i);
-                }
-                else
-                {
-                    if (i % 2 !== 0)
-                        result.push(i);
-                }
-            }
-            alert(result);
+        function compareTime(hours1, hours2, minutes1, minutes2, seconds1, seconds2) {
+            const seconds = Math.abs(toSeconds(false, hours1, minutes1, seconds1) - toSeconds(false, hours2, minutes2, seconds2));
+            const timeString = toTimeString(seconds, false);
+            alert(timeString);
+            return timeString;
         }
     </script>
 </body>
