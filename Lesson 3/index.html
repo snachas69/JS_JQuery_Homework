@@ -7,6 +7,105 @@
     <title>Gay Web-Site</title>
 </head>
 <body>
-    
+    <button onclick="Task1()">Task 1</button>
+    <button onclick="Task2()">Task 2</button>
+    <button onclick="Task3()">Task 3</button>
+    <button onclick="Task4()">Task 4</button>
+    <button onclick="Task5()">Task 5</button>
+
+    <script>
+        function Task1() {
+            const start = Number(prompt("Start of the range"));
+            const end = Number(prompt("End of the range"));
+
+            if (!isNaN(start) && !isNaN(end)) {
+                let sum = 0;
+                for (let i = start; i < end; i++)
+                    sum += i;
+
+                alert(`The sum of numbers in the range is equal to ${sum}`);
+                return;
+            }
+
+            alert("Error");
+        }
+        function Task2() { //Я бы просто достал бы из строки length, но раз уж сказали использовать циклы -- использую циклы:)
+            const number = prompt("Enter the number");
+
+            if (!isNaN(Number(number))) {
+                let count = 0;
+                for (var char in number)
+                    count++;
+                alert(`This number is ${count}-digit`);
+                return;
+            }
+
+            alert("Error");
+        }
+        function Task3() {
+            let number;
+            let odd = 0;
+            let zeros = 0;
+            let negative = 0; 
+
+            for (let i = 0; i < 10; i++) {
+                number = prompt("Enter the integer number");
+                if (isNaN(Number(number)))
+                    i--;
+                else {
+                    number = Number(number);
+                    if (number === 0)
+                        zeros++;
+                    else {
+                        if (number % 2 !== 0)
+                            odd++;
+                        if (number < 0)
+                            negative++;
+                    }
+                }
+            }
+
+            alert(`Positive numbers: ${10 - negative}\nNegative numbers: ${negative}\nZeros: ${zeros}\nOdd numbers: ${odd}\nEven numbers: ${10 - odd}`);
+        }
+        function Task4() {
+            let continueOrNot;
+            do {
+                const a = Number(prompt("Enter the number"));
+                if (isNaN(a)) continue;
+
+                const b = Number(prompt("Enter the number"));
+                if (isNaN(b)) continue;
+                
+                const mathOp = prompt("Enter the math operation (+, -, *, /)");
+                if (!["-", "+", "*", "/"].includes(mathOp)) continue;
+
+                switch(mathOp) {
+                    case "+":
+                        alert(`${a} + ${b} = ${a + b}`);
+                        break;
+                    case "-":
+                        alert(`${a} - ${b} = ${a - b}`);
+                        break;
+                    case "*":
+                        alert(`${a} * ${b} = ${a * b}`);
+                        break;
+                    case "/":
+                        alert(`${a} / ${b} = ${a / b}`);
+                        break;
+                }
+
+                continueOrNot = prompt("Do you want to continue? (Y/N)").toLowerCase() === "y";
+            } while (continueOrNot);
+        }
+        function Task5() {
+            let string = "";
+            for (let a = 2; a < 10; a++) {
+                for (let b = 1; b <= 10; b++) 
+                    string += `${a} * ${b} = ${a * b}\n`;
+                alert(string);
+                string = "";
+            }
+        }
+    </script>
 </body>
 </html>
