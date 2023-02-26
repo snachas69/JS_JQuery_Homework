@@ -12,7 +12,7 @@
     <button onclick="Task3()">Task 3</button>
     <script>
         function Task1() {
-            let car = {
+            const car = {
                 model: "some model",
                 year: 2007,
                 avarageSpeed: 30,
@@ -25,20 +25,99 @@
                     const breaks = Math.trunc(time) / 4;
                     alert(time + breaks);
                 }
-            }
+            };
 
             car.info();
             car.time(20);
         }
         function Task2() {
-            let fraction = {
-
-            }
+            const fraction = {
+                numerator: 2,
+                denominator: 5,
+                reduction() {
+                    let a = Math.abs(this.numerator), b = Math.abs(this.denominator);
+                    a = a == 0 ? 1 : a;
+                    while (a !== b)
+                    {
+                        if (a > b) a -= b;
+                        else b -= a;
+                    }
+                    this.numerator /= a;
+                    this.denominator /= a;
+                    if (this.denominator < 0)
+                    {
+                        this.numerator *= -1;
+                        this.denominator *= -1;
+                    }
+                },
+                createNew(numerator, denominator) {
+                    const newFraction = JSON.parse(JSON.stringify(this));
+                    newFraction.numerator = numerator;
+                    newFraction.denominator = denominator;
+                    newFraction.reduction();
+                    return newFraction;
+                },
+                sum(fraction2) {
+                    const destination = JSON.parse(JSON.stringify(this));
+                    destination.numerator = this.numerator * fraction2.denominator + fraction2.numerator * this.denominator;
+                    destination.denominator = this.denominator * fraction2.denominator;
+                    destination.reduction();
+                    return destination;
+                },
+                sub(fraction2) {
+                    const destination = JSON.parse(JSON.stringify(this));
+                    destination.numerator = this.numerator * function2.denominator - function2.numerator * this.denominator;
+                    destination.denominator = this.denominator * function2.denominator;
+                    destination.reduction();
+                    return destination;
+                },
+                multiply(fraction2) {
+                    const destination = JSON.parse(JSON.stringify(this));
+                    destination.numerator = this.numerator * function2.numerator;
+                    destination.denominator = this.denominator * function2.denominator;
+                    destination.reduction();
+                    return destination;
+                },
+                divide(fraction2) {
+                    const destination = JSON.parse(JSON.stringify(this));
+                    destination.numerator = this.numerator * function2.denominator;
+                    destination.denominator = this.denominator * function2.numerator;
+                    destination.reduction();
+                    return destination;
+                }
+            };
         }
         function Task3() {
-            let dateTime = {
-                
-            }
+            const dateTime = {
+                hours: 12,
+                minutes: 20,
+                seconds: 58,
+                output() {
+                    alert(`${hours}:${minutes}:${seconds}`);
+                },
+                addSeconds(seconds) {
+                    let date = new Date(`2001-09-11T${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? hours : '0' + hours}:${seconds > 9 ? seconds : '0' + seconds}`);
+                    date.setSeconds(date.getSeconds() + seconds);
+
+                    this.hours = date.getHours();
+                    this.minutes = date.getMinutes();
+                    this.seconds = date.getSeconds();
+                },
+                addMinutes(minutes) {
+                    let date = new Date(`2001-09-11T${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? hours : '0' + hours}:${seconds > 9 ? seconds : '0' + seconds}`);
+                    date.setMinutes(date.getMinutes() + minutes);
+
+                    this.hours = date.getHours();
+                    this.minutes = date.getMinutes();
+                    this.seconds = date.getSeconds();
+                },
+                addHours(hours) {
+                    this.hours += hours;
+                }
+            };
+
+            dateTime.addMinutes(30);
+            dateTime.output();
         }
     </script>
 </body>
