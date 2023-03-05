@@ -8,21 +8,113 @@
 </head>
 <body>
     <button onclick="Task1()">Task 1</button>
+    <button onclick="Task2()">Task 2</button>
+    <button onclick="Task3()">Task 3</button>
+    <button onclick="Task4()">Task 4</button>
+    <button onclick="Task5()">Task 5</button>
+    <button onclick="Task6()">Task 6</button>
+    <button onclick="Task7()">Task 7</button>
+    <button onclick="Task8()">Task 8</button>
+    <button onclick="Task9()">Task 9</button>
+    <button onclick="Task10()">Task 10</button>
     <script>
-        function Acamulator(number) {
-            this.startingValue = number;
-            this.value = number;
-            this.read = function() {
-                value += prompt("Enter the number");
-            };
-        }
         function Task1() {
-            let accumulator = new Accumulator(1); // начальное значение 1 
- 
-            accumulator.read(); // прибавляет введённое пользователем значение к текущему значению 
-            accumulator.read(); // прибавляет введённое пользователем значение к текущему значению 
+            const compareString = (string1, string2) => {
+                return string1.length > string2.length ? 1 : string1.length < string2.length ? -1 : 0;
+            }
 
-            alert(accumulator.value);
+            alert(compareString("111", "2222"));
+        }
+
+        function Task2() {
+            const firstCharacterToUpper = (string) => {
+                return string.replace(string[0], string[0].toUpperCase());
+            }
+
+            alert(firstCharacterToUpper("abcd"));
+        }
+        function Task3() {
+            const vowelsCount = (string) => {
+                const vowels = ["a", "A", "e", "E", "i", "I", "o", "O", "u", "U"];
+
+                return string.split("").filter((i) => vowels.includes(i)).length;
+            }
+
+            alert(vowelsCount("Abbbelo"));
+        }
+        function Task4() {
+            const checkSpam = (string) => {
+                string = string.toLowerCase();
+                const spamWords = ["100% бесплатно", "только сегодня", "не удаляйте", "увеличение продаж", "xxx"];
+                return spamWords.find((i) => string.includes(i)) !== undefined;
+            }
+
+            alert(checkSpam("100% НЕ БЕСПЛАТНО! Только не сегодня, поспешите!"));
+        }
+        function Task5() {
+            const cutTail = (string, length) => {
+                return string.substr(0, length) + "...";
+            }
+
+            alert(cutTail("Hello world!", 4));
+        }
+        function Task6() {
+            const isPalydrome = (string) => {
+                const original = string.split(" ").join("").toLowerCase();
+                const reversed = string.split(" ").reverse().join("").toLowerCase();
+                return original === reversed;
+            }
+
+            alert(isPalydrome("A6 <=> a6"));
+        }
+        function Task7() {
+            const wordsCount = (text) => {
+                return text.toLowerCase().split(/[\s,.:!?]+/).length - 1;
+            }
+
+            alert(wordsCount("Abra kada: bra! Blah: blah!"));
+        }
+        function Task8() {
+            const theLongestWord = (text) => {
+                return text.toLowerCase().split(/[\s,.:!?]+/).sort((a, b) => b.length - a.length)[0];
+            }
+
+            alert(theLongestWord("Abra kada: bra! Blah: blahhh!"));
+        }
+        function Task9() {
+            const averageWordLength = (text) => {
+                let count = 0, length = 0;
+                for (let word of text.toLowerCase().split(/[\s,.:!?]+/)) {
+                    length += word.length;
+                    count++;
+                }
+
+                return length / count;
+            }
+
+            alert(averageWordLength("Abra kada: bra! Blah: blahhh!"))
+        }
+        function Task10() {
+            const charInText = (text, char) => {
+                let results = [];
+
+                for (let i = 0; i < text.length; i++) {
+                    if (text[i] === char)
+                        results.push(i);
+                }
+
+                results.push(results.length);
+                return results;
+            }
+
+            const results = charInText("Abra kada: bra! Blah: blahhh!", "a");
+            let output = "Indexes of a:\n";
+            for (let i = 0; i < results.length - 1; i++) {
+                output += results[i] + "\n";
+            }
+            output += `Quantity of a: ${results[results.length - 1]}`;
+
+            alert(output);
         }
     </script>
 </body>
